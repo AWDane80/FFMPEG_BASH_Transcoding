@@ -14,3 +14,26 @@ _Note: You can run this general solution with software processing as opossed to 
 I am not going to go over the passthrough and general LXC setup to gian access to the render hardware here, you can find details on this from Jim's Garage https://youtu.be/0ZDr5h52OOE?si=upQh3_PikvpoJ5Ck (video) https://github.com/JamesTurland/JimsGarage/tree/main/LXC/Jellyfin (instructions) which are technically for a Jellyfin container setup, but the basics are the same in terms of passing through the iGPU to your LXC. 
 
 My Plex Media Server is running on the same ProxMox node but as its own separate LXC and all media files on NFS shares from a dedicated NFS/NAS (I prefer to manage my file shares manually, so I am not utilzing any NAS software but rather managing NFS and SMB shares myself on bare metal Debian), hosted on a RAID5 48TB ext4 array (you can do ZFS if you like, will need memory and ensure you understand ZFS fully to entrust your media files to it, again I perfer hardware RAID for this purpose, there are many other situations where I would go with ZFS),
+
+```
+#!/bin/bash
+clear
+
+#Definitions
+        echo ----------------------------------------------
+        echo "Processing Daily Transcoding Jobs:"
+        echo "TV Shows"
+        echo "DVR Movies"
+        echo "Sports"
+        echo ----------------------------------------------
+        echo "Sedning Status Email email@address.domain"
+        echo ----------------------------------------------
+cd "/mnt/PlexNFS/Plex/DVR Movies"
+bash "/mnt/PlexNFS/Plex/DVR Movies/h265_Movies.sh"
+cd "/mnt/PlexNFS/Plex/TV Shows"
+bash "/mnt/PlexNFS/Plex/TV Shows/h265_TV.sh"
+cd "/mnt/PlexNFS/Plex/Sports"
+bash "/mnt/PlexNFS/Plex/Sports/h265_Sport.sh"
+cd /root
+bash "/root/mail.sh"
+```
