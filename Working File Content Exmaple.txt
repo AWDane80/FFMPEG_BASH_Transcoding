@@ -1,0 +1,6 @@
+Contents of working file with files identified:
+./Crazy Rich Asians (2018)/Crazy Rich Asians (2018).ts
+./The Bodyguard (1992)/The Bodyguard (1992).ts
+
+Contents of working file with no files identified:
+./**/*.ts

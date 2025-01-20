@@ -1,0 +1,20 @@
+Exmaple mail.sh Email Output:
+
+# Topic: Proxmox Transcoder Process - 2025-01-20_12:56
+
+# Body:
+---------------------------------------------------------------------------------------
+Sender:         Root @ FFMPEG Debian Transcode LXC
+System:         Orion Proxmox Cluster
+Process:        Daily Transcoder Cronjob Completion Notification
+---------------------------------------------------------------------------------------
+TV Files Processed:
+"./**/*.ts"
+---------------------------------------------------------------------------------------
+Movies Files Processed:
+"./Crazy Rich Asians (2018)/Crazy Rich Asians (2018).ts
+./The Bodyguard (1992)/The Bodyguard (1992).ts"
+---------------------------------------------------------------------------------------
+Sports Files Processed:
+"./**/*.ts"
+---------------------------------------------------------------------------------------
