@@ -10,7 +10,6 @@ clear
         echo ----------------------------------------------
         echo "Sedning Status Email email@domain.com"
         echo ----------------------------------------------
-# Changing Working Directory to Plex "DVR Movies" Library
 cd "/mnt/PlexNFS/Plex/DVR Movies"
         echo "Executing H265 (HEVC) DVR Movies Transcode Script in mounted storage"
         echo "See specific encoding details in log files"
