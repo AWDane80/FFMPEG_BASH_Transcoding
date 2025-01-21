@@ -11,8 +11,8 @@ sportvalue=$(<"/mnt/PlexNFS/Plex/Daily Transcoding/Working Files/SportScript_$( 
 	echo "$movievalue"
 	echo "$sportvalue"
 	echo ----------------------------------------------
-        echo "Sedning Status Email proxmox@w-family.com"
-        echo ----------------------------------------------
+    echo "Sedning Status Email email@domain.com"
+    echo ----------------------------------------------
 
 #Email Subsystem Sending Command
 mail -s "Proxmox Transcoder Process -  $( date '+%F_%H:%M')" "email@domain.com" <<EOF
