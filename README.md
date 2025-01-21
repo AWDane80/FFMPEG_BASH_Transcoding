@@ -8,7 +8,7 @@ I am __NOT__ an experienced developer and have relied heavily on community forum
 
 I have decided to establish this REPO since I wanted to give back to the community that helped me buidl my homelab from the ground up to the point where I now have a stable, efficient and modular transcoding platform up and running using nothing but open-source software. As I have gone through this project, I have begun to enjoy this part of the work a lot, and I am planning to take up more documentation and instructional projects, if you have a specific project in mind that could tie in with this sort of work, please feel free to comment so I can consider future projects.
 
-   __###-Thank you to the entire community for your help and support, truly amazing to be part of it.__
+###   -Thank you to the entire community for your help and support, truly amazing to be part of it.
 
 ----------------------------------------------------------------
 
@@ -21,12 +21,20 @@ In the past I was running _MCEBuddy_ with _Handbrake Cli_ as its encoding founda
 
 Some of the old hardware has been refurbished for a lab role in the new PVE environment, _(turned out this was a blessing in disguise as I discovered that my integrated liquid CPU cooler had been leaking all over the motherboard into the memory sockets)_ and is now reconfigured as a ProxMox Backup Server _(might create a separate repo on this part of the project later)_ and the new Plex Server is configured as an LXC _(Linux Container)_ in the PVE mapping to the media files vis NFS over a 10GBit _Ubiquiti Aggregate Switch_.
 
-As I used to rely on MCEBuddy in Windows to handle the daily transcoding 
-As a newly converted Windows to Linux user for my home Plex Server setup I have several proejcts I am working on to automate and optimze the setup, one of these were a way to automatically transcode DVR recordings from MPEG2 .TS files to H265 (HEVC) .MKV (Matroska) containers for more efficient storage usage and retain device compability to avoid playback issues and need for live transcoding.
+I used to rely on MCEBuddy in Windows to handle the daily transcoding to automatically transcode DVR recordings from MPEG2 _.TS_ files to H265 (HEVC) .MKV _(Matroska)_ containers for more efficient storage usage and retain device compability to avoid playback issues and need for live transcoding. With the change to a Linux based Plex foundation I found myself with some options:
+* Spin up a Windows VM in the PVE and run MCEBuddy with the old scripts
+* Explore a Linux command line option
 
-Coming form a Windows setup (Win11) with Plex Media Server and supporting software, specfically MCEBuddy for transcoding management/scheduling, I decided to adopt some of the concepts MCEBuddy utlizes but change others as I learned more about FFMPEG and general BASH scripting. 
+I obviously chose the latter, and the results are pretty awesome.
 
-
+## All The Steps Outlined:
+While the actual recording is entirely handled within the Plex interface, all sub-sequent transcoding is conducted using base FFMPEG and basic BASH scripting, below you will find the steps being performed as part of the overall script execution:
+* Overall BASH script executes as CRONJOB daily at 01:00 AM, currently consist of 4 separate sub-scripts called _(3 for transcoding specifics folders and 1 for emailing a summary of what has been done, you will find all these scripts in the repo with any perosnal information replaced with generic placeholders.)_
+* Transcoding Scripts with specific FFMPEG configuration to suit the specific type of recording, _I transcode movies with a higher quality (lower setting technically as H265/HEVC quality setting is reverse in magnitude) as compared to TV shows and Sports_, 
+        - Creating and adding to a dedicated working file to capture .TS files worked on.
+        - Creating and adding to a dedicated log file for each specific transcoding process executed. _Examples of Working File Contents and Log Files are provided in this repo._ 
+        - And finally moving the original .TS file to a temporary location outside the Plex library as a backup in case there is an issue with the transcoded MKV file. _I plan to build a clean up script in the near future once I am comfortable with the overall process execution._
+* Summary Email Script, sending a summary of what has been worked on during the overall execution by reading defined variables that dig into the generated working files contained information on which files has been worked on. _An example output email with perosnal information replaced is provided in the repo along with the actual emailing BASH script._
 
 ```
 #!/bin/bash
