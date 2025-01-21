@@ -31,9 +31,9 @@ I obviously chose the latter, and the results are pretty awesome.
 While the actual recording is entirely handled within the Plex interface, all sub-sequent transcoding is conducted using base FFMPEG and basic BASH scripting, below you will find the steps being performed as part of the overall script execution:
 * Overall BASH script executes as CRONJOB daily at 01:00 AM, currently consist of 4 separate sub-scripts called _(3 for transcoding specifics folders and 1 for emailing a summary of what has been done, you will find all these scripts in the repo with any perosnal information replaced with generic placeholders.)_
 * Transcoding Scripts with specific FFMPEG configuration to suit the specific type of recording, _I transcode movies with a higher quality (lower setting technically as H265/HEVC quality setting is reverse in magnitude) as compared to TV shows and Sports_, 
-        - Creating and adding to a dedicated working file to capture .TS files worked on.
-        - Creating and adding to a dedicated log file for each specific transcoding process executed. _Examples of Working File Contents and Log Files are provided in this repo._ 
-        - And finally moving the original .TS file to a temporary location outside the Plex library as a backup in case there is an issue with the transcoded MKV file. _I plan to build a clean up script in the near future once I am comfortable with the overall process execution._
+  - Creating and adding to a dedicated working file to capture .TS files worked on.
+  - Creating and adding to a dedicated log file for each specific transcoding process executed. _Examples of Working File Contents and Log Files are provided in this repo._ 
+  - And finally moving the original .TS file to a temporary location outside the Plex library as a backup in case there is an issue with the transcoded MKV file. _I plan to build a clean up script in the near future once I am comfortable with the overall process execution._
 * Summary Email Script, sending a summary of what has been worked on during the overall execution by reading defined variables that dig into the generated working files contained information on which files has been worked on. _An example output email with perosnal information replaced is provided in the repo along with the actual emailing BASH script._
 
 ```
